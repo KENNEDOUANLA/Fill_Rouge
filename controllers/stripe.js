@@ -5,8 +5,8 @@ const Stripe = async (req, res) =>
     const { montant, number } = req.body;
     const total = montant * 100
     const session = await stripe.checkout.sessions.create({
-        success_url: 'http://test.lesbonplan.fr:3000/success',
-        cancel_url: 'http://test.lesbonplan.fr:3000/faile',
+        success_url: 'page le paiement avec success',
+        cancel_url: 'page le paiement sans success',
         payment_method_types: ['card'],
         line_items: [
             {

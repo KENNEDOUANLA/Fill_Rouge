@@ -20,7 +20,7 @@ const GetCommandes = async (req, res) =>
         res.status(200).json({ message: "success", "order": commande });
     }).catch((error) =>
     {
-        res.status(500).json({ message: 'something went wrong here ', error });
+        res.status(500).json({ message: 'something went wrong ', error });
     });
 }
 
@@ -39,7 +39,7 @@ const SetCommande = async (req, res) =>
         })
 
     } else {
-        res.status(500).json({ message: 'user dont exist ' });
+        res.status(400).json({ message: 'user dont exist ' });
     }
 
 }
@@ -108,7 +108,7 @@ const SendCommande = async (req, res) =>
                 })
                 .catch((error) => { res.status(500).json({ message: 'something went wrong ', error }) });
         } else {
-            res.status(500).json({ message: 'something went wrong ' });
+            res.status(500).json({ message: 'error: http://90.73.65.139:8000/api/orders ' });
         }
     } catch (error) {
         res.status(500).json({ message: 'something went wrong ', error });

@@ -30,7 +30,7 @@ const Signup = async (req, res) =>
         else
             USER.create({ nom_user, email, password, role }).then((user) =>
             {
-                res.status(200).json({ message: "success", user: user.nom_user })
+                res.status(200).json({ message: "success", user: user })
             }).catch((error) =>
             {
                 res.status(500).json({ message: "something went wrong ", error })
@@ -44,16 +44,14 @@ const Signup = async (req, res) =>
 const GetUser = async (req, res) =>
 {
 
-    const { nom_user } = req.body;
+    const nom_user = req.params.name;
 
     USER.findAll({
         where: { nom_user }
     }).then((user) =>
     {
-        console.log(user);
-        console.log("THIS IS TE ID", user)
         if (user[0])
-            res.status(200).json({ message: "success", "name": user[0] })
+            res.status(200).json({ message: "success", "user": user[0] })
         else
             res.status(400).json({ message: "User not exists" })
     }).catch((error) =>
