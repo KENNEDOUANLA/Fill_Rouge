@@ -12,7 +12,26 @@ Route.get("/panier", GetPanier);
 Route.post("/newPanier", CreerPanier);
 //commandes
 
+/** 
+*  @swagger
+* /Commandes :
+*  get:
+*        description: Get all commands
+*        responses :
+*           200:
+*               description : Success 
+*/
 Route.get("/allcommande/:id", GetCommandes);
+
+/** 
+*  @swagger
+* /Commandes :
+*  post:
+*        description: Send command
+*        responses :
+*           200:
+*               description : Success 
+*/
 Route.get("/sendcommander", SendCommande);
 Route.get("/sentcommander", SetCommande);
 Route.post("/updatecommande", UpdateCommande);
