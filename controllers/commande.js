@@ -75,7 +75,8 @@ const Update = async (req, res) =>
 
 const SendCommande = async (req, res) =>
 {
-    const { id } = req.body;
+    const { id } = req.params;
+    console.log(req.params)
     const ToSend = { idCommande: "", clientName: "", listeProduit: "", date: "", status: "En cours" }
     const host = 'http://90.73.65.139:8000/api/orders'
     let resulat;
@@ -103,7 +104,8 @@ const SendCommande = async (req, res) =>
             order.update({ statut: "EN COURS" })
                 .then((response) =>
                 {
-                    res.status(200).json({ message: 'votre commande a ete enregistre' });
+                    res.redirect("http://localhost:3000/",)
+                    //res.status(200).json({ message: 'votre commande a ete enregistre' });
                     console.log(response)
                 })
                 .catch((error) => { res.status(500).json({ message: 'something went wrong ', error }) });

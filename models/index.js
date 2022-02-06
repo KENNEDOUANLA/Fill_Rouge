@@ -12,7 +12,7 @@ const PANIER = sequelize.define('Panier', {
     id_panier: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     prix_total: { type: DataTypes.INTEGER, allowNull: false },
     produits: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
         get() { JSON.parse(this.getDataValue('produits')) },
         set(val) { this.setDataValue('produits', JSON.stringify(val)) }

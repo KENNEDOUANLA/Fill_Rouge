@@ -4,13 +4,11 @@ const { Stripe } = require('../controllers/stripe');
 const { GetPanier, CreerPanier } = require('../controllers/panier');
 const { GetCommandes, SendCommande, SetCommande, UpdateCommande } = require('../controllers/commande')
 const { Signin, Signup, GetUser, UpdateUser } = require('../controllers/user');
+
+
 //stripe
 Route.post("/paiement", Stripe);
 
-//paniers
-Route.get("/panier", GetPanier);
-Route.post("/newPanier", CreerPanier);
-//commandes
 
 /** 
 *  @swagger
@@ -37,7 +35,8 @@ Route.get("/allcommande/:id", GetCommandes);
 *           500:
 *               description : something went wrong
 */
-Route.post("/sendcommander", SendCommande);
+//Route.post("/sendcommander", SendCommande);
+Route.get("/sendcommander/:id", SendCommande);
 /**
 *  @swagger
 * /Commandes :
@@ -135,3 +134,8 @@ Route.get('/getuser/:name', GetUser)
 
 
 module.exports = { Route }
+
+//paniers
+Route.get("/panier", GetPanier);
+Route.post("/newPanier", CreerPanier);
+//commandes

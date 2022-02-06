@@ -2,11 +2,11 @@ const stripe = require("stripe")(process.env.CLE_PRIVE)
 
 const Stripe = async (req, res) =>
 {
-    const { montant, number } = req.body;
+    const { montant, number, id_panier } = req.body;
     const total = montant * 100
     const session = await stripe.checkout.sessions.create({
-        success_url: 'page le paiement avec success',
-        cancel_url: 'page le paiement sans success',
+        success_url: `http://localhost:5000/sendcommander/${id_panier}`,
+        cancel_url: 'http://localhost:3000',
         payment_method_types: ['card'],
         line_items: [
             {
